@@ -1,1 +1,19 @@
 test
+
+<h2 class="archive-title">Archives: {{ page.title | date: '%B %Y' }}</h2>
+{% for post in page.posts %}
+<article> 
+    <header class="entry-header">
+        <h2 class="entry-title">
+            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+        <time class="published" datetime="{{ post.date }}" pubdate="">
+            <a href="{{ post.url | prepend: site.baseurl }}">{{ post.date | date_to_string }}</a>
+        </time>
+    </header>
+
+    <div class="entry-content">
+        {{ content }}
+    </div>
+</article>
+{% endfor %}
